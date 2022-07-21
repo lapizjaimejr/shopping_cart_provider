@@ -49,21 +49,7 @@ class HomePage extends StatelessWidget {
                       border: Border.all(color: Color(0xFF716f72), width: 1)),
                 ),
                 onTap: () {
-                  if (context.read<DataClass>().x >= 5) {
-                    Get.snackbar("Item", "Can not more than this",
-                        backgroundColor: Colors.black,
-                        colorText: Colors.white,
-                        titleText: Text(
-                          "Item",
-                          style: TextStyle(fontSize: 40, color: Colors.white),
-                        ),
-                        messageText: Text(
-                          "Can not be more than this",
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ));
-                  } else {
-                    context.read<DataClass>().incrementX();
-                  }
+                  Provider.of<DataClass>(context, listen: false).incrementX();
                 },
               ),
               Spacer(),
