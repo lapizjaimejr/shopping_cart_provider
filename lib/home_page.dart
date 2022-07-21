@@ -2,8 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import 'package:provider_test/second_page.dart';
-
+import 'package:shopping_cart_provider/second_page.dart';
 import 'data_class.dart';
 
 class HomePage extends StatelessWidget {
@@ -49,7 +48,24 @@ class HomePage extends StatelessWidget {
                       border: Border.all(color: Color(0xFF716f72), width: 1)),
                 ),
                 onTap: () {
-                  Provider.of<DataClass>(context, listen: false).incrementX();
+                  if (Provider.of<DataClass>(context, listen: false).x < 5) {
+                    Provider.of<DataClass>(context, listen: false).incrementX();
+                  } else {
+                    Get.snackbar(
+                      "Item",
+                      "Can not more than this",
+                      backgroundColor: Colors.black,
+                      colorText: Colors.white,
+                      titleText: Text(
+                        "Item",
+                        style: TextStyle(fontSize: 40, color: Colors.white),
+                      ),
+                      messageText: Text(
+                        "Can not be more than this",
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
+                    );
+                  }
                 },
               ),
               Spacer(),
